@@ -42,24 +42,30 @@ main () {
     }
 
     if (opcao == 3) {
-      printf ("Digite os números que deseja multiplicar (1 para parar): ");
+      printf ("Digite os números que deseja multiplicar (0 para parar): ");
       scanf ("%f", &num);
       total = num;
-      while (num != 1) {
-        printf ("Digite os números que deseja multiplicar (1 para parar): ");
+      while (num != 0) {
+        printf ("Digite os números que deseja multiplicar (0 para parar): ");
         scanf ("%f", &num);
+        if (num == 0) {
+          break;
+        }
         total = total * num;
       }
       printf ("O resultado da sua multiplicação é: %.2f", total);
     }
 
     if (opcao == 4) {
-      printf ("Digite os números que deseja dividir (1 para parar): ");
+      printf ("Digite os números que deseja dividir (0 para parar): ");
       scanf ("%f", &num);
       total = num;
-      while (num != 1) {
-        printf ("Digite os números que deseja dividir (1 para parar): ");
+      while (num != 0) {
+        printf ("Digite os números que deseja dividir (0 para parar): ");
         scanf ("%f", &num);
+        if (num == 0) {
+          break;
+        }
         total = total / num;
       }
       printf ("O resultado da sua divisão é: %.2f", total);
