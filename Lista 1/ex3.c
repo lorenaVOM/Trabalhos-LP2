@@ -21,4 +21,6 @@ main () {
     cont += 1;
   }
 
+  return 0;
+  
 }
