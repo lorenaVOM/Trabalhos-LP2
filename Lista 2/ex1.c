@@ -7,22 +7,21 @@ main () {
 
   int num;
 
-  printf ("Digite um número para ver seus divisores (-1 para parar): ");
+  printf ("\nDigite um número para ver seus divisores (-1 para parar): ");
   scanf ("%d", &num);
 
-  printf("\n D(%d): ", num);
-
   while (num >= 0) {
-    printf ("Digite um número para ver seus divisores (-1 para parar): ");
-    scanf ("%d", &num);
     if (num == -1) {
       break;
     }
+    printf("\n D(%d): ", num);
     for (int c = 1; c <= num; ++c) {
       if (num % c == 0) {
         printf (" %d ", c);
       }
     }
+    printf ("\nDigite um número para ver seus divisores (-1 para parar): ");
+    scanf ("%d", &num);
   }
 
   return 0;
