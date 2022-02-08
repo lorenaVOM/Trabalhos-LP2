@@ -18,7 +18,9 @@ main () {
     printf ("Digite a opção desejada: ");
     scanf ("%d", &opcao);
 
-    if (opcao == 1) {
+    switch (opcao)
+    {
+    case 1:
       printf ("Digite os números que deseja somar (0 para parar): ");
       scanf ("%f", &num);
       while (num != 0) {
@@ -27,9 +29,9 @@ main () {
         scanf ("%f", &num);
       }
       printf ("O resultado da sua soma é: %f", total);
-    }
+      break;
 
-    if (opcao == 2) {
+    case 2:
       printf ("Digite os números que deseja subtrair (0 para parar): ");
       scanf ("%f", &num);
       total = num;
@@ -39,9 +41,8 @@ main () {
         total -= num;
       }
       printf ("O resultado da sua subtração é: %f", total);
-    }
 
-    if (opcao == 3) {
+    case 3:
       printf ("Digite os números que deseja multiplicar (0 para parar): ");
       scanf ("%f", &num);
       total = num;
@@ -54,9 +55,8 @@ main () {
         total = total * num;
       }
       printf ("O resultado da sua multiplicação é: %.2f", total);
-    }
 
-    if (opcao == 4) {
+    case 4:
       printf ("Digite os números que deseja dividir (0 para parar): ");
       scanf ("%f", &num);
       total = num;
@@ -69,28 +69,27 @@ main () {
         total = total / num;
       }
       printf ("O resultado da sua divisão é: %.2f", total);
-    }
 
-    if (opcao == 5) {
+    case 5:
       printf ("Digite o número e em seguida digite seu expoente: ");
       scanf ("%f %f", &num1, &exp);
       printf ("O resultado da sua exponenciação é: %.2f", pow(num1, exp));
-    }
-
-    if (opcao == 6) {
+    
+    case 6:
       printf ("Digite o número para ver seu logarítimo: ");
       scanf ("%f", &num);
       printf ("O log de %.2f na base 10 é: %.2f", num, log10(num));
-    }
 
-    if (opcao == 7) {
+    case 7:
       printf ("Digite o número para calcular sua raiz quadrada: ");
       scanf ("%f", &num);
       printf ("A raiz quadrada de %.2f é %.2f", num, sqrt(num));
-    }
 
-    if (opcao == 8) {
+    case 8:
       printf ("Obrigada por usar nossa calculadora. Volte sempre!");
+    
+    default:
+      printf ("Essa opção não é válida");
     }
 
     printf ("\nDeseja realizar uma nova operação? (1 para SIM e 8 para NÃO) ");
