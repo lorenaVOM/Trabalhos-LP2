@@ -10,10 +10,7 @@ main () {
   cont = 0;
 
   printf ("Digite 2 números inteiros para serem dividos através do método de subtrações sucessivas: ");
-  scanf ("%d", num1);
-  printf ("Digite 2 números inteiros para serem dividos através do método de subtrações sucessivas: ");
-  scanf ("%d", num2);
-
+  scanf ("%d %d", &num1, &num2);
 
   resto = num1 - num2;
 

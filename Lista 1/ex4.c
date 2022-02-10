@@ -22,7 +22,7 @@ main () {
       resp -= resp;
     }
 
-    senX = pow(numX, cont + (cont - 1)) / fat;
+    senX += pow(numX, cont + (cont - 1)) / fat;
 
     if (cont > 10) {
       printf ("%.2f\n", senX);
