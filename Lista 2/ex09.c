@@ -8,28 +8,22 @@ main () {
   int idade, grau_inst, opiniao, cont1, novo, velho, soma_idades, cont2, cont3, cont;
   float media, percentual;
 
-  cont = 0;
-  cont1 = 0;
-  cont2 = 0;
-  cont3 = 0;
+  cont = cont1 = cont2 = cont3 = novo = velho = soma_idades = 0;
 
-  do {
-    printf ("Digite a idade do espectador (-1 para finalizar): ");
-    scanf ("%d", &idade);
+  printf ("Digite a idade do espectador (-1 para finalizar): ");
+  scanf ("%d", &idade);
 
-     if (idade == -1 || idade < 0) {
-      break;
-    }
-    
+  while (idade > 0 && idade != -1) {
+
     if (cont == 0) {
       novo = velho = idade;
     }
     else {
       if (idade > velho) {
-        idade = velho;
+        velho = idade;
       }
       if (idade < novo) {
-        idade = novo;
+        novo = idade;
       }
     }
 
@@ -53,13 +47,16 @@ main () {
     }
 
     cont += 1;
+    
+    printf ("Digite a idade do espectador (-1 para finalizar): ");
+    scanf ("%d", &idade);
 
-  } while (idade > 0 && idade != -1);
+  }
 
   media = soma_idades / cont1;
   percentual = (cont3 * 100) / cont2;
 
-  printf ("A média das pessoas que responderam \"ótimo\" foi de %.2f.\nO expectador mais velho tinha %d anos.\nO expectador mais novo tinha %d.\nO percentual de pessoas com mais de 10 anos de instrução que responderam \"péssimo\" foi de %.2f.", media, velho, novo, percentual);
+  printf ("A média das pessoas que responderam \"ótimo\" foi de %.2f.\nO expectador mais velho tinha %d anos.\nO expectador mais novo tinha %d anos.\nO percentual de pessoas com mais de 10 anos de instrução que responderam \"péssimo\" foi de %.2f%%.", media, velho, novo, percentual);
 
   return 0;
 

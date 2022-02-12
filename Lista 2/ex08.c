@@ -12,7 +12,7 @@ main () {
 
   for (int c = 1; c <= 10; c++) {
     result = num * c;
-    printf ("\n4x%d = %d", c, result);
+    printf ("\n%dx%d = %d", num, c, result);
   }
 
   return 0;

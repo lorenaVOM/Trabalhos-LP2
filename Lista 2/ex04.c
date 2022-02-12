@@ -5,21 +5,21 @@
 
 main () {
 
-  int num1, num2, quociente, resto, cont;
+  int num1, num2, resto, cont;
 
-  cont = 0;
+  cont = 1;
 
   printf ("Digite 2 números inteiros para serem dividos através do método de subtrações sucessivas: ");
   scanf ("%d %d", &num1, &num2);
 
   resto = num1 - num2;
 
-  while (resto != 1 || resto != 0) {
+  while (resto != num1 % num2) {
     resto -= num2;
     cont += 1;
   }
 
-  printf ("%d %d", cont, resto);
+  printf ("O quociente da sua divisão é %d e o resto %d.", cont, resto);
 
   return 0;
 
