@@ -5,8 +5,51 @@
 
 main () {
 
+  int transacoes, conta, cod, deb;
+  float valor, taxa, bal_min, saldo_inicial, saldo_final;
 
+  deb = 0;
 
+  printf ("Digite o saldo inicial da sua conta: ");
+  scanf ("%f", &saldo_inicial);
+
+  printf ("\nQuantas transações (depósito ou retirada) foram feitas na sua conta no dia de hoje: ");
+  scanf ("%d", &transacoes);
+
+  for (int c = 0; c < transacoes; c++) {
+    printf ("\nDigite o número da conta: ");
+    scanf ("%d", &conta);
+
+    printf ("\nDigite o código da transação (1 depósito/0 retirada): ");
+    scanf ("%d", &cod);
+
+    printf ("\nDigite o valor da transação: ");
+    scanf ("%f", &valor);
+
+    
+    if (cod == 1) {
+      saldo_final = saldo_inicial + valor;
+    }
+    if (cod == 0) {
+      saldo_final = saldo_inicial - valor;
+      deb += valor;
+    }
+  }
+
+  bal_min = 0.05 * saldo_inicial;
+  
+  if (saldo_final > bal_min) {
+    printf ("\nNúmero da conta: %d", conta);
+    printf ("\nSaldo da conta: %.2f", saldo_final);
+    printf ("\nBalanço mínimo: %.2f", bal_min);
+    printf ("\nNÃO HÁ FUNDOS!");
+  }
+
+  if (saldo_final < bal_min) {
+    printf ("\nNúmero da conta: %d", conta);
+    printf ("\nSaldo da conta: %.2f", saldo_final);
+    printf ("\nBalanço mínimo: %.2f", bal_min);
+  }
   return 0;
   
 }
