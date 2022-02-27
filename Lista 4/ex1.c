@@ -1,7 +1,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-
 main () {
   
   int idade [20];
@@ -26,7 +25,6 @@ main () {
   printf("\nVetor invertido: ");
   for (int i = 0; i < 20; i++)
   printf("%d ", idade[i]);
-
 
   return 0;
 }
