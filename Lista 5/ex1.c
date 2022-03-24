@@ -12,14 +12,14 @@ void maiusc (char *frase) {
 
 char concatena (char *str1, char *str2) {
 
-int tam = strlen(str1);
+  int tam = strlen(str1);
 
-for (int i = 0; i < strlen(str2) + 1 ; i++) {
-  *(str1 + tam) = *(str2 + i);
-  tam++;
-}
-return str1;
-}
+  for (int i = 0; i < strlen(str2) + 1 ; i++) {
+    *(str1 + tam) = *(str2 + i);
+    tam++;
+  }
+  return str1;
+  }
 
 int capit (char *frase) {
 
@@ -41,35 +41,26 @@ int capit (char *frase) {
 
 int comp (char *str1, char *str2) {
 
-int i = 0, res = 0, menor;
+  int res;
 
-if (strlen(str1) < strlen(str2)) {
-  menor = strlen(str1);
-}
-else {
-  menor = strlen(str2);
-}
-
-for (i; i < menor; i++) {
-
-  if (*(str1 + i) < *(str2 + i)) {
+  if (strlen(str1) < strlen(str2)) {
     res = -1;
+    return res;
   }
-  else if (*(str1 + i) == *(str2 + i)) {
+  else if (strlen(str1) == strlen(str2)) {
     res = 0;
-  }
-  else if (*(str1 + i) > *(str2 + i)) {
+    return res;
+  } 
+  else if (strlen(str1) > strlen(str2)) {
     res = 1;
+    return res;
   }
-}
-printf ("%d", res);
-return res;
 }
 
 main () {
 
 char frase1 [30], frase2 [30];
-int opcao, cont = 0;
+int opcao, cont = 0, r = 0;
 
 printf ("Digite uma frase: \n");
 gets(frase1);
@@ -103,12 +94,17 @@ case 2:
 case 3:
 
   capit(frase1);
-
+  while (frase1[cont] != '\0') {
+    cont += 1;
+  }
+  printf("Quantidade de caraceteres: %d", cont);
+  
   break;
 
 case 4:
 
-  comp(frase1, frase2);
+  r = comp(frase1, frase2);
+  printf("\n%d", r);
 
   break;
 
