@@ -52,12 +52,24 @@ void imprime (tpFigura *espacoR3) {
 }
 
 void apaga (tpFigura *espacoR3, char letra) {
+  FILE *desenho;
 
-  for (int i = 0; i < 10; i++) {
-    if (espacoR3[i].rotulo == letra) {
-      espacoR3[i].rotulo = 35;
+  desenho = fopen ("desenho.dat", "rb");
+  if (desenho == NULL) {
+    printf ("ERRO!");
+  }
+  else {
+    for (int i = 0; i < 10; i++) {
+      fread (&espacoR3, sizeof(tpFigura), 4, desenho);
+      desenho = fopen ("desenho.dat", "ab");
+      if (espacoR3[i].rotulo == letra) {
+        espacoR3[i].rotulo = 35;
+        fwrite (&espacoR3, sizeof(tpFigura), 4, desenho);
+      }
+      fclose (desenho);
     }
   }
+  fclose (desenho);
 }
 
 int main () {
