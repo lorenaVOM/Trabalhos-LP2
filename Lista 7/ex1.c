@@ -47,7 +47,7 @@ int main () {
         printf ("ERRO!");
       }
       else {
-        fprintf (disciplinas, "%d %s \n", disciplina_1.cod, disciplina_1.nome);
+        fprintf (disciplinas, "Código da disciplina: %d Nome: %s \n", disciplina_1.cod, disciplina_1.nome);
         fclose (disciplinas);
       }
       printf ("\nDisciplina %s criada com sucesso.", disciplina_1.nome);
@@ -79,7 +79,7 @@ int main () {
             printf ("ERRO!");
           }
           else {
-            fprintf (alunos, "%s %d %d %s \n", disciplina_1.turma[i].aluno_1.nome, disciplina_1.turma[i].aluno_1.matricula, disciplina_1.turma[i].aluno_1.idade, disciplina_1.turma[i].aluno_1.curso);
+            fprintf (alunos, "\nAluno:\n Nome: %s Matrícula: %d Idade: %d Curso: %s \n", disciplina_1.turma[i].aluno_1.nome, disciplina_1.turma[i].aluno_1.matricula, disciplina_1.turma[i].aluno_1.idade, disciplina_1.turma[i].aluno_1.curso);
             fclose (alunos);
           }
         }
@@ -104,9 +104,15 @@ int main () {
       break;
 
     case 4:
-      printf ("\n--- ALUNOS --- ");
 
-      for (int i = 0; i <= 40; i++) {
+      alunos = fopen ("alunos.txt", "r");
+      if (alunos == NULL) {
+        printf ("ERRO!");
+      }
+      else {
+        printf ("\n--- ALUNOS --- ");
+
+        for (int i = 0; i <= 40; i++) {
 
         if (disciplina_1.turma[i].aluno_1.matricula != 0) {
           printf ("\nDados do aluno: ");
@@ -118,7 +124,8 @@ int main () {
           printf ("\nCR: %d", disciplina_1.turma[i].aluno_1.cr);
         }
       }
-
+      fclose (alunos);
+      }
       break;
 
     case 5:
