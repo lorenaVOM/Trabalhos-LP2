@@ -21,6 +21,7 @@ int main () {
   int opcao;
   int cont2 = 0, exmatricula = 0, cont5 = 0, excod = 0;
   float media_notas = 0;
+  char listar, boletim;
   struct disciplina disciplina_1;
   FILE *disciplinas, *alunos, *boletins;
 
@@ -47,7 +48,7 @@ int main () {
         printf ("ERRO!");
       }
       else {
-        fprintf (disciplinas, "Código da disciplina: %d Nome: %s \n", disciplina_1.cod, disciplina_1.nome);
+        fprintf (disciplinas, "Código da disciplina: %d \nNome: %s \n", disciplina_1.cod, disciplina_1.nome);
         fclose (disciplinas);
       }
       printf ("\nDisciplina %s criada com sucesso.", disciplina_1.nome);
@@ -79,7 +80,7 @@ int main () {
             printf ("ERRO!");
           }
           else {
-            fprintf (alunos, "\nAluno:\n Nome: %s Matrícula: %d Idade: %d Curso: %s \n", disciplina_1.turma[i].aluno_1.nome, disciplina_1.turma[i].aluno_1.matricula, disciplina_1.turma[i].aluno_1.idade, disciplina_1.turma[i].aluno_1.curso);
+            fprintf (alunos, "\nAluno:\nNome: %s \nMatrícula: %d \nIdade: %d \nCurso: %s \n", disciplina_1.turma[i].aluno_1.nome, disciplina_1.turma[i].aluno_1.matricula, disciplina_1.turma[i].aluno_1.idade, disciplina_1.turma[i].aluno_1.curso);
             fclose (alunos);
           }
         }
@@ -110,24 +111,13 @@ int main () {
         printf ("ERRO!");
       }
       else {
-        printf ("\n--- ALUNOS --- ");
-
-        for (int i = 0; i <= 40; i++) {
-
-        if (disciplina_1.turma[i].aluno_1.matricula != 0) {
-          printf ("\nDados do aluno: ");
-
-          printf ("\nNome: %s", disciplina_1.turma[i].aluno_1.nome);
-          printf ("\nMatrícula: %d", disciplina_1.turma[i].aluno_1.matricula);
-          printf ("\nIdade: %d", disciplina_1.turma[i].aluno_1.idade);
-          printf ("\nCurso: %s", disciplina_1.turma[i].aluno_1.curso);
-          printf ("\nCR: %d", disciplina_1.turma[i].aluno_1.cr);
+        while ((listar = fgetc(alunos)) != EOF) {
+          printf ("%c", listar);
         }
-      }
       fclose (alunos);
       }
       break;
-
+    
     case 5:
       for (int i = 0; i <= 40; i++) {
         if (disciplina_1.turma[i].aluno_1.matricula != 0) {
@@ -140,16 +130,36 @@ int main () {
       break;
 
     case 6:
-      for (int i = 0; i <= 40; i++) {
 
-        printf ("\n--- BOLETIM ---");
-
-        printf ("\nNome do aluno: %s", disciplina_1.turma[i].aluno_1.nome);
-        printf ("\nMatrícula: %d", disciplina_1.turma[i].aluno_1.matricula);
-        printf ("\nCurso: %s", disciplina_1.turma[i].aluno_1.curso);
-        printf ("\nNota: %d", disciplina_1.turma[i].notas);
-        printf ("\nFaltas: %d", disciplina_1.turma[i].faltas);
+      boletins = fopen ("boletins.txt", "w");
+      if (boletins == NULL) {
+        printf ("ERRO!");
       }
+      else {
+        for (int i = 0; i <= 40; i++) {
+
+          fprintf (boletins, "\n--- BOLETIM ---");
+
+          fprintf (boletins, "\nNome do aluno: %s", disciplina_1.turma[i].aluno_1.nome);
+          fprintf (boletins, "\nMatrícula: %d", disciplina_1.turma[i].aluno_1.matricula);
+          fprintf (boletins, "\nCurso: %s", disciplina_1.turma[i].aluno_1.curso);
+          fprintf (boletins, "\nNota: %d", disciplina_1.turma[i].notas);
+          fprintf (boletins, "\nFaltas: %d", disciplina_1.turma[i].faltas);
+        }
+      }
+      fclose (boletins);
+
+      boletins = fopen ("boletins.txt", "r");
+      if (boletins == NULL) {
+        printf ("ERRO!");
+      }
+      else {
+        while ((boletim = fgetc(boletins)) != EOF) {
+            printf ("%c", boletim);
+          }
+      }
+      fclose (boletins);
+
       break;
 
     case 7:
