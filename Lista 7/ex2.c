@@ -80,7 +80,6 @@ int main () {
             printf ("ERRO!");
           }
           else {
-            printf ("\nAluno:\nNome: %s \nMatrícula: %d \nIdade: %d \nCurso: %s \n", disciplina_1.turma[i].aluno_1.nome, disciplina_1.turma[i].aluno_1.matricula, disciplina_1.turma[i].aluno_1.idade, disciplina_1.turma[i].aluno_1.curso);
             fwrite (&disciplina_1.turma[i].aluno_1, sizeof (struct aluno), 4, alunos);
           }
           fclose (alunos);
@@ -107,16 +106,25 @@ int main () {
 
     case 4:
 
-      alunos = fopen ("alunos.txt", "r");
+      alunos = fopen ("alunos.txt", "rb");
       if (alunos == NULL) {
         printf ("ERRO!");
       }
       else {
-        while ((listar = fgetc(alunos)) != EOF) {
-          printf ("%c", listar);
+        for (int i = 0; i <= 40; i++) {
+          while (fread (&disciplina_1.turma[i].aluno_1, sizeof (struct aluno), 5, alunos)) {
+            printf ("\nDados do aluno: ");
+
+            printf ("\nNome: %s", disciplina_1.turma[i].aluno_1.nome);
+            printf ("\nMatrícula: %d", disciplina_1.turma[i].aluno_1.matricula);
+            printf ("\nIdade: %d", disciplina_1.turma[i].aluno_1.idade);
+            printf ("\nCurso: %s", disciplina_1.turma[i].aluno_1.curso);
+            printf ("\nCR: %d", disciplina_1.turma[i].aluno_1.cr);
+          }
         }
-      fclose (alunos);
       }
+        fclose (alunos);
+      
       break;
     
     case 5:
@@ -132,20 +140,31 @@ int main () {
 
     case 6:
 
-      boletins = fopen ("boletins.dat", "wb");
+      boletins = fopen ("boletins.txt", "ab");
       if (boletins == NULL) {
         printf ("ERRO!");
       }
       else {
         for (int i = 0; i <= 40; i++) {
+          fwrite (&disciplina_1.turma[i].aluno_1, sizeof (struct aluno), 5, boletins);
 
-          printf ("\n--- BOLETIM ---");
+          fclose (boletins);
 
-          printf ("\nNome do aluno: %s", disciplina_1.turma[i].aluno_1.nome);
-          printf ("\nMatrícula: %d", disciplina_1.turma[i].aluno_1.matricula);
-          printf ("\nCurso: %s", disciplina_1.turma[i].aluno_1.curso);
-          printf ("\nNota: %d", disciplina_1.turma[i].notas);
-          printf ("\nFaltas: %d", disciplina_1.turma[i].faltas);
+          boletins = fopen ("boletins.txt", "rb");
+          if (boletins == NULL) {
+            printf ("ERRO!");
+          }
+          else {
+            while (fread (&disciplina_1.turma[i].aluno_1, sizeof (struct aluno), 5, boletins)) {
+            printf ("\n--- BOLETIM ---");
+
+            printf ("\nNome do aluno: %s", disciplina_1.turma[i].aluno_1.nome);
+            printf ("\nMatrícula: %d", disciplina_1.turma[i].aluno_1.matricula);
+            printf ("\nCurso: %s", disciplina_1.turma[i].aluno_1.curso);
+            printf ("\nNota: %d", disciplina_1.turma[i].notas);
+            printf ("\nFaltas: %d", disciplina_1.turma[i].faltas);
+            }
+          }
         }
       }
       fclose (boletins);
@@ -194,4 +213,6 @@ int main () {
   } while (opcao != 8);
 
   return 0;
+
+  //consertar função boletim
 }
